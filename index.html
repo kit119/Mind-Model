@@ -167,7 +167,7 @@ bounds = [[0,0],[1000,1000]]
 map.setView([-140, 140], 1);
 map.on("contextmenu", onMapRightClick)
 
-mouseOpt  = {mouseover:mouseover,mouseout:mouseout,click:mouseclick}
+mouseOpt  = {mouseover:mouseover,mouseout:mouseout,click:tapover}
 markers   = {type:"FeatureCollection",features:[]}
 mindClass = [], mindClass.push(L.geoJSON(L.point[0,0]))
 textLabel = [], textLabel.push(L.geoJSON(L.point[0,0]))
@@ -192,7 +192,7 @@ function bindTable(layer) {p=layer.feature.properties
 function circleOpts(color){""==color?o=0:o=1; return {radius:11,color:'black',fillColor:color,opacity:o,fillOpacity:o,weight:1,}} 
 function mouseover(e) {this.setStyle({color:'red'  ,weight:3,}),this.bringToFront(),t=t=e.target.feature.properties,info.update([t.bali,t.thai])}
 function mouseout(e)  {this.setStyle({color:'black',weight:1,})}
-function mouseclick(e){console.log(e.target)}
+function tapover(e)   {t=t=e.target.feature.properties,info.update([t.bali,t.thai])}
 function classify(c){(c?c=c:c=0); 
 return ['','salmon','lime','yellow','aqua','violet','orange','white'][c]} //return kolor.BREWER.Pastel1[c]} 
 function offset1(f){f<10?f=-10:f>99?f=-14:f=-12;return f}
